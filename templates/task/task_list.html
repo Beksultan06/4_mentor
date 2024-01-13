@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Все таски</h2>
+
+  <!-- Filters -->
+  <form method="get" action="{% url 'task_list' %}" class="form-inline mb-3">
+    <div class="form-group mr-2">
+      <label for="status-filter" class="mr-2">Фильтрация по статусу:</label>
+      <select id="status-filter" name="status" class="form-control">
+        <option value="all" {% if status_filter == "all" %}selected{% endif %}>Все</option>
+        <option value="completed" {% if status_filter == "completed" %}selected{% endif %}>Завершенный</option>
+        <option value="not_completed" {% if status_filter == "not_completed" %}selected{% endif %}>Не завершен</option>
+        
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Применить фильтр</button>
+  </form>
+
+  <!-- Tasks -->
+  {% for task in tasks %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ task.title }}</h5>
+      <p class="card-text">{{ task.description }}</p>
+      <p class="card-text">
+        Срок : {{ task.due_date }}</p>
+      <p class="card-text">Статус: {% if task.status %}Завершенный{% else %}Не завершен{% endif %}</p>
+      <a href="{% url 'task_detail' task.id %}" class="btn btn-info">Посмотреть детали</a>
+    </div>
+  </div>
+  {% endfor %}
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <span class="step-links">
+      {% if tasks.has_previous %}
+      <a href="?page=1" class="btn btn-secondary">&laquo;
+        первый</a>
+      <a href="?page={{ tasks.previous_page_number }}" class="btn btn-secondary">предыдущий</a>
+      {% endif %}
+
+      <span class="current">
+        Страница {{ tasks.number }} of {{ tasks.paginator.num_pages }}.
+      </span>
+
+      {% if tasks.has_next %}
+      <a href="?page={{ tasks.next_page_number }}" class="btn btn-secondary">следующий</a>
+      <a href="?page={{ tasks.paginator.num_pages }}" class="btn btn-secondary">последний &raquo;</a>
+      {% endif %}
+    </span>
+  </div>
+</div>
+{% endblock %}

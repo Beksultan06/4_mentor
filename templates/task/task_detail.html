@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>Подробности задачи</h2>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ task.title }}</h5>
+        <p class="card-text">{{ task.description }}</p>
+        <p class="card-text">Срок: {{ task.due_date }}</p>
+        <p class="card-text">Статус: {% if task.status %}Завершенный{% else %}Не завершен{% endif %}</p>
+      </div>
+    </div>
+    <a href="{% url 'task_list' %}" class="btn btn-primary mt-3">
+      Вернуться к списку задач</a>
+  </div>
+{% endblock %}
