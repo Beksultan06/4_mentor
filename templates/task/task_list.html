@@ -5,7 +5,7 @@
   <h2>Все таски</h2>
 
   <!-- Filters -->
-  <form method="get" action="{% url 'task_list' %}" class="form-inline mb-3">
+  <form method="get" style="display: flex;" action="{% url 'task_list' %}" class="form-inline mb-3">
     <div class="form-group mr-2">
       <label for="status-filter" class="mr-2">Фильтрация по статусу:</label>
       <select id="status-filter" name="status" class="form-control">
@@ -33,7 +33,7 @@
   {% endfor %}
 
   <!-- Pagination -->
-  <div class="pagination">
+  <div class="pagination" style="display: inline-flex;">
     <span class="step-links">
       {% if tasks.has_previous %}
       <a href="?page=1" class="btn btn-secondary">&laquo;
@@ -42,7 +42,7 @@
       {% endif %}
 
       <span class="current">
-        Страница {{ tasks.number }} of {{ tasks.paginator.num_pages }}.
+        Страница {{ tasks.number }} из {{ tasks.paginator.num_pages }}.
       </span>
 
       {% if tasks.has_next %}

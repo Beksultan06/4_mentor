@@ -5,12 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Наши таски{% endblock %}</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyLcMlZ6mwu4l4lByiRS3d1e2hFkUJl2an" crossorigin="anonymous">
-  
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .navbar {
+      background-color: #ffffff;
+    }
+
+    .navbar-nav .nav-item .nav-link {
+      color: #343a40;
+    }
+
+    /* Center the content */
+    .center-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Horizontal header */
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-toggler-icon {
+      order: -1; /* Move the toggler to the left */
+    }
+  </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{% url 'signup' %}">Наши таски</a>
+  <a class="navbar-brand" href="{% url 'task_list' %}">
+    Наши таски
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -24,25 +57,24 @@
       </li>
       {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">выйти</a>
+          <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
         </li>
       {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">войти</a>
+          <a class="nav-link" href="{% url 'login' %}">Войти</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'signup' %}">рагистрация</a>
+          <a class="nav-link" href="{% url 'signup' %}">Регистрация</a>
         </li>
       {% endif %}
     </ul>
   </div>
 </nav>
 
-{% block content %}{% endblock %}
+<div class="center-content">
+  {% block content %}{% endblock %}
+</div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-rF9Xp1vCI6BX4LqVJK4GCer81gBq8EPaDL6Ow8Cp5t9uU/AzYmLc3rB1KxJz1x0F" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyLcMlZ6mwu4l4lByiRS3d1e2hFkUJl2an" crossorigin="anonymous"></script>
-
-</body>
-</html>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C-ogpamoFVy38MVBnE+IbbVYUew+OrCXaR1YQ==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.

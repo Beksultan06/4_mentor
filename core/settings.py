@@ -135,3 +135,37 @@ MEDIA_ROOT = BASE_DIR/ 'media'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+JAZZMIN_SETTINGS = {
+    "site_title": "TaskManager",  # Заголовок сайта
+    "site_header": "TaskManager",  # Заголовок на экране входа
+    "site_brand": "TaskManager",  # Выходит на сайте вместо Django-admin.(Администрирование сайта)
+    "welcome_sign": "Добро пожаловать в TaskManager",  # Приветственный текст на экране входа
+    "copyright": "TaskManager",  # Авторское право (footer)
+
+
+    "topmenu_links": [
+        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "Support", "url": "https://web.telegram.org/k/Bek_sul_t_an", "new_window": True},
+
+    ],
+
+    "show_sidebar": True,
+
+    "changeform_format": "horizontal_tabs",
+
+}
+
+
+JAZZMIN_UI_TWEAKS = {
+    # белый фон:
+    # "theme": "flatly",
+    # "theme" : "simplex",  # белый фон с цветами - RGB
+    # "theme": "sketchy",  #  мультяшный
+
+    # темный фон:
+    # "theme": "darkly",
+    "theme": "itera",    # темный (серьезный , полностью)
+
+}
